@@ -5,7 +5,7 @@ CREATE TABLE user (
   id              INT PRIMARY KEY AUTO_INCREMENT,
   userId          VARCHAR(60) UNIQUE
   COMMENT '用户编号，6位以上数字',
-  idCard          VARCHAR(512) UNIQUE
+  idCard          VARCHAR(512)
   COMMENT '身份证号，AES',
   name            VARCHAR(128) COMMENT '姓名',
   mobile          VARCHAR(20) COMMENT '电话',
@@ -55,9 +55,9 @@ CREATE TABLE pet (
   COMMENT '宠物表'
   ENGINE = InnoDB;
 
-INSERT INTO pet VALUES (NULL, 'tiane', '天鹅', 30, 15, 300, 'tiane.gif');
-INSERT INTO pet VALUES (NULL, 'kongque', '孔雀', 30, 15, 300, 'kongque.gif');
-INSERT INTO pet VALUES (NULL, 'qilin', '麒麟', 30, 15, 300, 'qilin.gif');
+INSERT INTO pet VALUES (NULL, 'tiane', '天鹅', '30', 15, '300', 'tiane.gif');
+INSERT INTO pet VALUES (NULL, 'kongque', '孔雀', '30', 15, '300', 'kongque.gif');
+INSERT INTO pet VALUES (NULL, 'qilin', '麒麟', '30', 15, '300', 'qilin.gif');
 
 CREATE TABLE leader_rate (
   id     INT PRIMARY KEY AUTO_INCREMENT,
@@ -79,7 +79,7 @@ INSERT INTO leader_rate VALUES (NULL, 999, 1);
 CREATE TABLE other_rate (
   id      INT PRIMARY KEY AUTO_INCREMENT,
   rateKey VARCHAR(128) COMMENT '提成项',
-  rate    VARCHAR(20) COMMENT '提成比例或提成值',
+  rate    VARCHAR(512) COMMENT '提成比例或提成值',
   note    TEXT COMMENT '说明'
 )
   COMMENT '其他设置'
@@ -218,15 +218,6 @@ CREATE TABLE active_income (
 )
   COMMENT '激活收益'
   ENGINE = InnoDB;
-
-# CREATE TABLE daily_income (
-#   userId     VARCHAR(60) COMMENT '玩家Id',
-#   createTime VARCHAR(10) COMMENT '日期',
-#   output     VARCHAR(20) COMMENT '产币数',
-#   teamIncome VARCHAR(20) COMMENT '团队所得金币'
-# )
-#   COMMENT '每日收入明细'
-#   ENGINE = InnoDB;
 
 CREATE TABLE recommend_income (
   id              INT PRIMARY KEY AUTO_INCREMENT,
