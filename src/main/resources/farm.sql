@@ -272,3 +272,20 @@ CREATE TABLE transfer (
 )
   COMMENT '转账'
   ENGINE =InnoDB;
+
+-- changeset lichen:2016102701
+ALTER TABLE pet_lifecycle MODIFY liveDays INT DEFAULT 0
+COMMENT '宠物生存天数';
+ALTER TABLE withdraw ADD COLUMN realMoney VARCHAR(20) COMMENT '实际到账金额';
+ALTER TABLE withdraw ADD COLUMN fee VARCHAR(20) COMMENT '手续费';
+
+-- changeset lichen:2016102702
+INSERT INTO other_rate VALUES (NULL, 'daily_repurchase_limit', '50', '每天复购限制最大次数');
+ALTER TABLE user ADD COLUMN todayRepurchase INT DEFAULT 0
+COMMENT '今天已复购次数';
+
+-- changeset lichen:2016102703
+ALTER TABLE total_income ADD COLUMN operationFee VARCHAR(20) COMMENT '扣除系统维护费';
+ALTER TABLE total_income ADD COLUMN withdrawOutput VARCHAR(20) COMMENT '提现金额';
+ALTER TABLE total_income ADD COLUMN trasferIncome VARCHAR(20) COMMENT '金币转入';
+ALTER TABLE total_income ADD COLUMN trasferOutput VARCHAR(20) COMMENT '金币转出';
