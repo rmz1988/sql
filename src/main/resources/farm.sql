@@ -289,3 +289,23 @@ ALTER TABLE total_income ADD COLUMN operationFee VARCHAR(20) COMMENT '扣除系�
 ALTER TABLE total_income ADD COLUMN withdrawOutput VARCHAR(20) COMMENT '提现金额';
 ALTER TABLE total_income ADD COLUMN trasferIncome VARCHAR(20) COMMENT '金币转入';
 ALTER TABLE total_income ADD COLUMN trasferOutput VARCHAR(20) COMMENT '金币转出';
+
+-- changeset lichen:2016102704
+ALTER TABLE total_income MODIFY COLUMN output VARCHAR(20) DEFAULT '0.00'
+COMMENT '静态产币';
+ALTER TABLE total_income MODIFY COLUMN recommendIncome VARCHAR(20) DEFAULT '0.00'
+COMMENT '推荐奖励';
+ALTER TABLE total_income MODIFY COLUMN leaderIncome VARCHAR(20) DEFAULT '0.00'
+COMMENT '领导奖';
+ALTER TABLE total_income MODIFY COLUMN activeIncome VARCHAR(20) DEFAULT '0.00'
+COMMENT '激活奖';
+ALTER TABLE total_income MODIFY COLUMN currentTotal VARCHAR(20) DEFAULT '0.00'
+COMMENT '当前余额';
+ALTER TABLE total_income MODIFY COLUMN operationFee VARCHAR(20) DEFAULT '0.00'
+COMMENT '扣除系统维护费';
+ALTER TABLE total_income MODIFY COLUMN withdrawOutput VARCHAR(20) DEFAULT '0.00'
+COMMENT '提现金额';
+ALTER TABLE total_income MODIFY COLUMN trasferIncome VARCHAR(20) DEFAULT '0.00'
+COMMENT '金币转入';
+ALTER TABLE total_income MODIFY COLUMN trasferOutput VARCHAR(20) DEFAULT '0.00'
+COMMENT '金币转出';
