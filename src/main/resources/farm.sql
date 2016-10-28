@@ -309,3 +309,7 @@ ALTER TABLE total_income MODIFY COLUMN trasferIncome VARCHAR(20) DEFAULT '0.00'
 COMMENT '金币转入';
 ALTER TABLE total_income MODIFY COLUMN trasferOutput VARCHAR(20) DEFAULT '0.00'
 COMMENT '金币转出';
+
+-- changeset lichen:2016102801
+INSERT INTO dict VALUES (NULL, 'feedStatus', '0', '否');
+INSERT INTO dict VALUES (NULL, 'feedStatus', '1', '是');
