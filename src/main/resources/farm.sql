@@ -341,3 +341,6 @@ COMMENT '转出金额';
 ALTER TABLE total_income
   ADD COLUMN repurchase VARCHAR(20) DEFAULT '0.00'
 COMMENT '复购扣除金额';
+
+-- changeset lichen:2016102902
+INSERT INTO other_rate VALUES (NULL, 'daily_output_normal_rate', '10', '宠物每日产币正常比例');
