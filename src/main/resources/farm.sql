@@ -344,3 +344,50 @@ COMMENT '复购扣除金额';
 
 -- changeset lichen:2016102902
 INSERT INTO other_rate VALUES (NULL, 'daily_output_normal_rate', '10', '宠物每日产币正常比例');
+
+-- changeset lichen:2016103001
+ALTER TABLE withdraw
+  ADD COLUMN bankAccountName VARCHAR(60) COMMENT '银行开户名或支付宝昵称';
+
+-- changeset lichen:2016103002
+ALTER TABLE transfer
+  ADD COLUMN userId VARCHAR(60) COMMENT '用户编号';
+
+-- changeset lichen:2016103003
+CREATE TABLE notice (
+  id         INT PRIMARY KEY AUTO_INCREMENT,
+  noticeId   VARCHAR(32) UNIQUE
+  COMMENT '公告id',
+  title      VARCHAR(256) COMMENT '标题',
+  content    TEXT COMMENT '公告内容',
+  createTime BIGINT COMMENT '发布时间'
+)
+  COMMENT '公告'
+  ENGINE = InnoDB;
+
+CREATE TABLE feedback (
+  id         INT PRIMARY KEY AUTO_INCREMENT,
+  feedbackId VARCHAR(32) UNIQUE
+  COMMENT '反馈Id',
+  title      VARCHAR(256) COMMENT '标题',
+  content    TEXT COMMENT '反馈内容',
+  createTime BIGINT COMMENT '提交时间'
+)
+  COMMENT '反馈'
+  ENGINE = InnoDB;
+
+-- changeset lichen:2016103004
+ALTER TABLE feedback
+  ADD COLUMN status CHAR(1) DEFAULT '0'
+COMMENT '0：等待回复，1：已回复';
+ALTER TABLE feedback
+  ADD COLUMN reply TEXT COMMENT '回复';
+ALTER TABLE feedback
+  ADD COLUMN replyTime BIGINT COMMENT '回复时间';
+
+INSERT INTO dict VALUES (NULL, 'feedbackStatus', '0', '等待回复');
+INSERT INTO dict VALUES (NULL, 'feedbackStatus', '1', '已回复');
+
+-- changeset lichen:2016103005
+ALTER TABLE feedback
+  ADD COLUMN userId VARCHAR(60) COMMENT '玩家编号';
