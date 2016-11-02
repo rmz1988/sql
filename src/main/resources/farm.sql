@@ -394,3 +394,14 @@ ADD COLUMN userId VARCHAR(60) COMMENT '玩家编号';
 
 -- changeset jiangjunying:2016103101
 INSERT INTO manager VALUES (NULL, 'admin', 'bfa6f8148363750fe9a2d463a51fb76f');
+
+-- changeset lichen:2016110201
+CREATE TABLE daily_income (
+  id          INT PRIMARY KEY AUTO_INCREMENT,
+  userId      VARCHAR(60) COMMENT '用户Id',
+  dailyOutput VARCHAR(20) COMMENT '每日产币数',
+  teamIncome  VARCHAR(20) COMMENT '团队收入',
+  createTime  VARCHAR(10) COMMENT '日期'
+)
+  COMMENT '每日收入列表'
+  ENGINE = InnoDB;
