@@ -419,3 +419,8 @@ CREATE TABLE recharge (
   ENGINE = InnoDB
   COMMENT = '充值记录';
 
+-- changeset jiangjunying:2016110301
+ALTER TABLE recharge ADD COLUMN status CHAR(1) DEFAULT '0'
+COMMENT '0：失败，1：成功';
+INSERT INTO dict VALUES (NULL, 'rechargeStatus', '0', '失败');
+INSERT INTO dict VALUES (NULL, 'rechargeStatus', '1', '成功');
