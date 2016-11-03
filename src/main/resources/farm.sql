@@ -405,3 +405,17 @@ CREATE TABLE daily_income (
 )
   COMMENT '每日收入列表'
   ENGINE = InnoDB;
+
+-- changeset jiangjunying:2016110201
+CREATE TABLE recharge (
+  id          INT PRIMARY KEY AUTO_INCREMENT,
+  rechargeId  VARCHAR(32) COMMENT '唯一标识',
+  userId      VARCHAR(60) COMMENT '用户Id',
+  activatedNo VARCHAR(3) COMMENT '激活中心号',
+  money       VARCHAR(20) COMMENT '充值额度',
+  note        TEXT COMMENT '说明',
+  createTime  BIGINT COMMENT '充值时间'
+)
+  ENGINE = InnoDB
+  COMMENT = '充值记录';
+
