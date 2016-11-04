@@ -432,3 +432,18 @@ WHERE dictGroup = 'bank' AND dictName = '11';
 -- changeset lichen:2016110402
 ALTER TABLE user ADD COLUMN activeMoney VARCHAR(20) DEFAULT '0.00'
 COMMENT '激活币';
+
+-- changeset lichen:2016110403
+CREATE TABLE transfer_to_active (
+  id            INT PRIMARY KEY AUTO_INCREMENT,
+  transferId    VARCHAR(32) UNIQUE
+  COMMENT '转换Id',
+  userId        VARCHAR(60) COMMENT '用户Id',
+  transferMoney VARCHAR(20)     DEFAULT '0.00'
+  COMMENT '转出奖励币余额',
+  activeMoney   VARCHAR(20)     DEFAULT '0.00'
+  COMMENT '当前激活币',
+  createTime    BIGINT COMMENT '转换时间'
+)
+  COMMENT '奖励币转激活币记录'
+  ENGINE =InnoDB;
