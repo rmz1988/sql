@@ -424,3 +424,11 @@ ALTER TABLE recharge ADD COLUMN status CHAR(1) DEFAULT '0'
 COMMENT '0：失败，1：成功';
 INSERT INTO dict VALUES (NULL, 'rechargeStatus', '0', '失败');
 INSERT INTO dict VALUES (NULL, 'rechargeStatus', '1', '成功');
+
+-- changeset lichen:2016110401
+DELETE FROM dict
+WHERE dictGroup = 'bank' AND dictName = '11';
+
+-- changeset lichen:2016110402
+ALTER TABLE user ADD COLUMN activeMoney VARCHAR(20) DEFAULT '0.00'
+COMMENT '激活币';
