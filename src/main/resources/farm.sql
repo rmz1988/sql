@@ -453,3 +453,15 @@ ALTER TABLE active_auth_apply MODIFY status CHAR(1) DEFAULT '0'
 COMMENT '0:待审核，1：通过，2：驳回,3:撤销';
 
 INSERT INTO dict VALUES (NULL, 'activeApplyStatus', '3', '已撤销');
+
+-- changeset lichen:2016110701
+UPDATE dict
+SET dictValue = '待发放'
+WHERE dictGroup = 'withdrawStatus' AND dictName = '0';
+
+-- changeset lichen:2016110702
+ALTER TABLE feedback ADD COLUMN delStatus CHAR(1) DEFAULT '0'
+COMMENT '0：未删除，1：已删除';
+
+-- changeset lichen:2016110703
+ALTER TABLE feedback ADD COLUMN pics TEXT COMMENT '图片说明，多个以;分隔';
