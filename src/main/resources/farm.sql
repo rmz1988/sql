@@ -465,3 +465,7 @@ COMMENT '0：未删除，1：已删除';
 
 -- changeset lichen:2016110703
 ALTER TABLE feedback ADD COLUMN pics TEXT COMMENT '图片说明，多个以;分隔';
+
+-- changeset lichen:2016110704
+ALTER TABLE total_income ADD COLUMN transferToActive VARCHAR(20) DEFAULT '0.00'
+COMMENT '奖励币转激活币';
