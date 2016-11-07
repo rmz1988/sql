@@ -447,3 +447,9 @@ CREATE TABLE transfer_to_active (
 )
   COMMENT '奖励币转激活币记录'
   ENGINE =InnoDB;
+
+-- changeset jiangjunying:2016110701
+ALTER TABLE active_auth_apply MODIFY status CHAR(1) DEFAULT '0'
+COMMENT '0:待审核，1：通过，2：驳回,3:撤销';
+
+INSERT INTO dict VALUES (NULL, 'activeApplyStatus', '3', '已撤销');
