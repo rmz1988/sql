@@ -469,3 +469,11 @@ ALTER TABLE feedback ADD COLUMN pics TEXT COMMENT '图片说明，多个以;分�
 -- changeset lichen:2016110704
 ALTER TABLE total_income ADD COLUMN transferToActive VARCHAR(20) DEFAULT '0.00'
 COMMENT '奖励币转激活币';
+
+-- changeset lichen:2016110901
+delete from dict where dictGroup = 'bank' and dictName = '3';
+delete from dict where dictGroup = 'bank' and dictName = '4';
+delete from dict where dictGroup = 'bank' and dictName = '6';
+delete from dict where dictGroup = 'bank' and dictName = '7';
+delete from dict where dictGroup = 'bank' and dictName = '8';
+delete from dict where dictGroup = 'bank' and dictName = '9';
