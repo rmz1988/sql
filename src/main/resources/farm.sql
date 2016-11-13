@@ -275,57 +275,57 @@ CREATE TABLE transfer (
 
 -- changeset lichen:2016102701
 ALTER TABLE pet_lifecycle
-MODIFY liveDays INT DEFAULT 0
-COMMENT '宠物生存天数';
+  MODIFY liveDays INT DEFAULT 0
+  COMMENT '宠物生存天数';
 ALTER TABLE withdraw
-ADD COLUMN realMoney VARCHAR(20) COMMENT '实际到账金额';
+  ADD COLUMN realMoney VARCHAR(20) COMMENT '实际到账金额';
 ALTER TABLE withdraw
-ADD COLUMN fee VARCHAR(20) COMMENT '手续费';
+  ADD COLUMN fee VARCHAR(20) COMMENT '手续费';
 
 -- changeset lichen:2016102702
 INSERT INTO other_rate VALUES (NULL, 'daily_repurchase_limit', '50', '每天复购限制最大次数');
 ALTER TABLE user
-ADD COLUMN todayRepurchase INT DEFAULT 0
+  ADD COLUMN todayRepurchase INT DEFAULT 0
 COMMENT '今天已复购次数';
 
 -- changeset lichen:2016102703
 ALTER TABLE total_income
-ADD COLUMN operationFee VARCHAR(20) COMMENT '扣除系统维护费';
+  ADD COLUMN operationFee VARCHAR(20) COMMENT '扣除系统维护费';
 ALTER TABLE total_income
-ADD COLUMN withdrawOutput VARCHAR(20) COMMENT '提现金额';
+  ADD COLUMN withdrawOutput VARCHAR(20) COMMENT '提现金额';
 ALTER TABLE total_income
-ADD COLUMN trasferIncome VARCHAR(20) COMMENT '金币转入';
+  ADD COLUMN trasferIncome VARCHAR(20) COMMENT '金币转入';
 ALTER TABLE total_income
-ADD COLUMN trasferOutput VARCHAR(20) COMMENT '金币转出';
+  ADD COLUMN trasferOutput VARCHAR(20) COMMENT '金币转出';
 
 -- changeset lichen:2016102704
 ALTER TABLE total_income
-MODIFY COLUMN output VARCHAR(20) DEFAULT '0.00'
-COMMENT '静态产币';
+  MODIFY COLUMN output VARCHAR(20) DEFAULT '0.00'
+  COMMENT '静态产币';
 ALTER TABLE total_income
-MODIFY COLUMN recommendIncome VARCHAR(20) DEFAULT '0.00'
-COMMENT '推荐奖励';
+  MODIFY COLUMN recommendIncome VARCHAR(20) DEFAULT '0.00'
+  COMMENT '推荐奖励';
 ALTER TABLE total_income
-MODIFY COLUMN leaderIncome VARCHAR(20) DEFAULT '0.00'
-COMMENT '领导奖';
+  MODIFY COLUMN leaderIncome VARCHAR(20) DEFAULT '0.00'
+  COMMENT '领导奖';
 ALTER TABLE total_income
-MODIFY COLUMN activeIncome VARCHAR(20) DEFAULT '0.00'
-COMMENT '激活奖';
+  MODIFY COLUMN activeIncome VARCHAR(20) DEFAULT '0.00'
+  COMMENT '激活奖';
 ALTER TABLE total_income
-MODIFY COLUMN currentTotal VARCHAR(20) DEFAULT '0.00'
-COMMENT '当前余额';
+  MODIFY COLUMN currentTotal VARCHAR(20) DEFAULT '0.00'
+  COMMENT '当前余额';
 ALTER TABLE total_income
-MODIFY COLUMN operationFee VARCHAR(20) DEFAULT '0.00'
-COMMENT '扣除系统维护费';
+  MODIFY COLUMN operationFee VARCHAR(20) DEFAULT '0.00'
+  COMMENT '扣除系统维护费';
 ALTER TABLE total_income
-MODIFY COLUMN withdrawOutput VARCHAR(20) DEFAULT '0.00'
-COMMENT '提现金额';
+  MODIFY COLUMN withdrawOutput VARCHAR(20) DEFAULT '0.00'
+  COMMENT '提现金额';
 ALTER TABLE total_income
-MODIFY COLUMN trasferIncome VARCHAR(20) DEFAULT '0.00'
-COMMENT '金币转入';
+  MODIFY COLUMN trasferIncome VARCHAR(20) DEFAULT '0.00'
+  COMMENT '金币转入';
 ALTER TABLE total_income
-MODIFY COLUMN trasferOutput VARCHAR(20) DEFAULT '0.00'
-COMMENT '金币转出';
+  MODIFY COLUMN trasferOutput VARCHAR(20) DEFAULT '0.00'
+  COMMENT '金币转出';
 
 -- changeset lichen:2016102801
 INSERT INTO dict VALUES (NULL, 'feedStatus', '0', '否');
@@ -333,13 +333,13 @@ INSERT INTO dict VALUES (NULL, 'feedStatus', '1', '是');
 
 -- changeset lichen:2016102901
 ALTER TABLE total_income
-CHANGE trasferIncome transferIncome VARCHAR(20) DEFAULT '0.00'
+  CHANGE trasferIncome transferIncome VARCHAR(20) DEFAULT '0.00'
 COMMENT '转入金额';
 ALTER TABLE total_income
-CHANGE trasferOutput transferOutput VARCHAR(20) DEFAULT '0.00'
+  CHANGE trasferOutput transferOutput VARCHAR(20) DEFAULT '0.00'
 COMMENT '转出金额';
 ALTER TABLE total_income
-ADD COLUMN repurchase VARCHAR(20) DEFAULT '0.00'
+  ADD COLUMN repurchase VARCHAR(20) DEFAULT '0.00'
 COMMENT '复购扣除金额';
 
 -- changeset lichen:2016102902
@@ -347,11 +347,11 @@ INSERT INTO other_rate VALUES (NULL, 'daily_output_normal_rate', '10', '宠物�
 
 -- changeset lichen:2016103001
 ALTER TABLE withdraw
-ADD COLUMN bankAccountName VARCHAR(60) COMMENT '银行开户名或支付宝昵称';
+  ADD COLUMN bankAccountName VARCHAR(60) COMMENT '银行开户名或支付宝昵称';
 
 -- changeset lichen:2016103002
 ALTER TABLE transfer
-ADD COLUMN userId VARCHAR(60) COMMENT '用户编号';
+  ADD COLUMN userId VARCHAR(60) COMMENT '用户编号';
 
 -- changeset lichen:2016103003
 CREATE TABLE notice (
@@ -378,19 +378,19 @@ CREATE TABLE feedback (
 
 -- changeset lichen:2016103004
 ALTER TABLE feedback
-ADD COLUMN status CHAR(1) DEFAULT '0'
+  ADD COLUMN status CHAR(1) DEFAULT '0'
 COMMENT '0：等待回复，1：已回复';
 ALTER TABLE feedback
-ADD COLUMN reply TEXT COMMENT '回复';
+  ADD COLUMN reply TEXT COMMENT '回复';
 ALTER TABLE feedback
-ADD COLUMN replyTime BIGINT COMMENT '回复时间';
+  ADD COLUMN replyTime BIGINT COMMENT '回复时间';
 
 INSERT INTO dict VALUES (NULL, 'feedbackStatus', '0', '等待回复');
 INSERT INTO dict VALUES (NULL, 'feedbackStatus', '1', '已回复');
 
 -- changeset lichen:2016103005
 ALTER TABLE feedback
-ADD COLUMN userId VARCHAR(60) COMMENT '玩家编号';
+  ADD COLUMN userId VARCHAR(60) COMMENT '玩家编号';
 
 -- changeset jiangjunying:2016103101
 INSERT INTO manager VALUES (NULL, 'admin', 'bfa6f8148363750fe9a2d463a51fb76f');
@@ -420,7 +420,8 @@ CREATE TABLE recharge (
   COMMENT = '充值记录';
 
 -- changeset jiangjunying:2016110301
-ALTER TABLE recharge ADD COLUMN status CHAR(1) DEFAULT '0'
+ALTER TABLE recharge
+  ADD COLUMN status CHAR(1) DEFAULT '0'
 COMMENT '0：失败，1：成功';
 INSERT INTO dict VALUES (NULL, 'rechargeStatus', '0', '失败');
 INSERT INTO dict VALUES (NULL, 'rechargeStatus', '1', '成功');
@@ -430,7 +431,8 @@ DELETE FROM dict
 WHERE dictGroup = 'bank' AND dictName = '11';
 
 -- changeset lichen:2016110402
-ALTER TABLE user ADD COLUMN activeMoney VARCHAR(20) DEFAULT '0.00'
+ALTER TABLE user
+  ADD COLUMN activeMoney VARCHAR(20) DEFAULT '0.00'
 COMMENT '激活币';
 
 -- changeset lichen:2016110403
@@ -446,4 +448,15 @@ CREATE TABLE transfer_to_active (
   createTime    BIGINT COMMENT '转换时间'
 )
   COMMENT '奖励币转激活币记录'
-  ENGINE =InnoDB;
+  ENGINE = InnoDB;
+
+-- changeset lichen:2016111301
+CREATE TABLE leader_income (
+  id         INT PRIMARY KEY AUTO_INCREMENT,
+  userId     VARCHAR(60) COMMENT '用户Id',
+  money      VARCHAR(20)     DEFAULT '0.00'
+  COMMENT '领导奖收入',
+  createTime VARCHAR(10) COMMENT '收入日期'
+)
+  COMMENT '待结算领导奖记录，结算后清除'
+  ENGINE = InnoDB;
