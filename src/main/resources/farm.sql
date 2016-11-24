@@ -482,9 +482,19 @@ ALTER TABLE total_income ADD COLUMN transferToActive VARCHAR(20) DEFAULT '0.00'
 COMMENT '奖励币转激活币';
 
 -- changeset lichen:2016110901
-delete from dict where dictGroup = 'bank' and dictName = '3';
-delete from dict where dictGroup = 'bank' and dictName = '4';
-delete from dict where dictGroup = 'bank' and dictName = '6';
-delete from dict where dictGroup = 'bank' and dictName = '7';
-delete from dict where dictGroup = 'bank' and dictName = '8';
-delete from dict where dictGroup = 'bank' and dictName = '9';
+DELETE FROM dict
+WHERE dictGroup = 'bank' AND dictName = '3';
+DELETE FROM dict
+WHERE dictGroup = 'bank' AND dictName = '4';
+DELETE FROM dict
+WHERE dictGroup = 'bank' AND dictName = '6';
+DELETE FROM dict
+WHERE dictGroup = 'bank' AND dictName = '7';
+DELETE FROM dict
+WHERE dictGroup = 'bank' AND dictName = '8';
+DELETE FROM dict
+WHERE dictGroup = 'bank' AND dictName = '9';
+
+-- changeset lichen:2016112401
+ALTER TABLE user ADD COLUMN todayLimitMoney VARCHAR(20) DEFAULT '0.00'
+COMMENT '今日已提现和互转币的总额';
