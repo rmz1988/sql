@@ -498,3 +498,7 @@ WHERE dictGroup = 'bank' AND dictName = '9';
 -- changeset lichen:2016112401
 ALTER TABLE user ADD COLUMN todayLimitMoney VARCHAR(20) DEFAULT '0.00'
 COMMENT '今日已提现和互转币的总额';
+
+-- changeset lichen:2016112501
+ALTER TABLE user ADD COLUMN todayTransferActiveLimitMoney VARCHAR(20) DEFAULT '0.00'
+COMMENT '今日奖励币转激活币总额';
