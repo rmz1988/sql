@@ -502,3 +502,43 @@ COMMENT '今日已提现和互转币的总额';
 -- changeset lichen:2016112501
 ALTER TABLE user ADD COLUMN todayTransferActiveLimitMoney VARCHAR(20) DEFAULT '0.00'
 COMMENT '今日奖励币转激活币总额';
+
+-- changeset lichen:2016113001
+ALTER TABLE transfer ADD COLUMN fee VARCHAR(20) DEFAULT '0.00'
+COMMENT '手续费';
+ALTER TABLE transfer ADD COLUMN realMoney VARCHAR(20) DEFAULT '0.00'
+COMMENT '实际到账金额';
+UPDATE transfer
+SET realMoney = money;
+
+-- changeset lichen:2016113002
+CREATE TABLE purchase_apply (
+  id                 INT PRIMARY KEY AUTO_INCREMENT,
+  applyId            VARCHAR(32) UNIQUE
+  COMMENT '申请Id',
+  userId             VARCHAR(60) COMMENT '用户Id,发起人',
+  oppositeUserId     VARCHAR(60) COMMENT '被收购用户Id',
+  money              VARCHAR(20) COMMENT '申请收购金额',
+  status             CHAR(1)         DEFAULT '0'
+  COMMENT '状态，0：等待对方处理，1：对方同意等待付款，2：对方拒绝，3：已付款，等待对方确认，4：已收款，完成',
+  accountName        VARCHAR(60) COMMENT '被收购人户名',
+  bank               CHAR(1) COMMENT '银行代码',
+  bankCard           VARCHAR(512) COMMENT '银行卡号,AES加密',
+  createTime         BIGINT COMMENT '申请时间',
+  statusTime         BIGINT COMMENT '发起人处理时间',
+  oppositeStatusTime BIGINT COMMENT '被收购用户处理时间'
+)
+  COMMENT '金币收购申请'
+  ENGINE = InnoDB;
+
+-- changeset lichen:2016113003
+INSERT INTO dict VALUES (NULL, 'purchaseSendStatus', '0', '等待处理', 'Waiting');
+INSERT INTO dict VALUES (NULL, 'purchaseSendStatus', '1', '对方同意', 'Agree');
+INSERT INTO dict VALUES (NULL, 'purchaseSendStatus', '2', '对方拒绝', 'Reject');
+INSERT INTO dict VALUES (NULL, 'purchaseSendStatus', '3', '已付款，等待对方确认', 'Wait for confirmation');
+INSERT INTO dict VALUES (NULL, 'purchaseSendStatus', '4', '完成', 'Finish');
+INSERT INTO dict VALUES (NULL, 'purchaseReceiveStatus', '0', '等待处理', 'Waiting');
+INSERT INTO dict VALUES (NULL, 'purchaseReceiveStatus', '1', '同意，等待对方付款', 'Wait for payment');
+INSERT INTO dict VALUES (NULL, 'purchaseReceiveStatus', '2', '拒绝', 'Reject');
+INSERT INTO dict VALUES (NULL, 'purchaseReceiveStatus', '3', '对方已付款', 'Payed');
+INSERT INTO dict VALUES (NULL, 'purchaseReceiveStatus', '4', '完成', 'Finish');
