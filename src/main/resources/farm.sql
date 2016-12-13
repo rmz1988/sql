@@ -2,15 +2,15 @@
 
 -- changeset lichen:2016121301
 ALTER TABLE active_apply
-  ADD COLUMN activateUserId VARCHAR(60) COMMENT '激活用户编号';
+ADD COLUMN activateUserId VARCHAR(60) COMMENT '激活用户编号';
 ALTER TABLE active_apply
-  DROP COLUMN activatedNo;
+DROP COLUMN activatedNo;
 
 ALTER TABLE pet_lifecycle
-  DROP COLUMN dailyOutputRate;
+DROP COLUMN dailyOutputRate;
 
 ALTER TABLE user
-  ADD COLUMN activateUserId VARCHAR(60) COMMENT '激活用户编号';
+ADD COLUMN activateUserId VARCHAR(60) COMMENT '激活用户编号';
 
 -- changeset lichen:2016121302
 UPDATE user u1, user u2
@@ -19,31 +19,31 @@ WHERE u1.activatedNo = u2.activeNo AND u1.userId != '171109';
 
 -- changeset lichen:2016121303
 ALTER TABLE user
-  DROP COLUMN activatedNo;
+DROP COLUMN activatedNo;
 ALTER TABLE user
-  DROP COLUMN todayTransferActiveLimitMoney;
+DROP COLUMN todayTransferActiveLimitMoney;
 ALTER TABLE user
-  DROP COLUMN isWithdraw;
+DROP COLUMN isWithdraw;
 ALTER TABLE user
-  DROP COLUMN bank;
+DROP COLUMN bank;
 ALTER TABLE user
-  DROP COLUMN bankAccountName;
+DROP COLUMN bankAccountName;
 ALTER TABLE user
-  DROP COLUMN bankCard;
+DROP COLUMN bankCard;
 ALTER TABLE user
-  ADD COLUMN total VARCHAR(20) DEFAULT '0.00'
+ADD COLUMN total VARCHAR(20) DEFAULT '0.00'
 COMMENT '累计收益';
 
 ALTER TABLE total_income
-  DROP COLUMN activeIncome;
+DROP COLUMN activeIncome;
 ALTER TABLE total_income
-  DROP COLUMN currentTotal;
+DROP COLUMN currentTotal;
 ALTER TABLE total_income
-  DROP COLUMN withdrawOutput;
+DROP COLUMN withdrawOutput;
 ALTER TABLE total_income
-  DROP COLUMN purchaseIncome;
+DROP COLUMN purchaseIncome;
 ALTER TABLE total_income
-  DROP COLUMN purchaseOutput;
+DROP COLUMN purchaseOutput;
 
 DELETE FROM other_rate
 WHERE rateKey IN ('redirect_repurchase_rate', 'daily_output_rate', 'active_get_rate', 'daily_output_normal_rate');
@@ -81,7 +81,7 @@ CREATE TABLE feed_income (
 
 -- changeset lichen:2016121305
 ALTER TABLE user
-  DROP COLUMN activeNo;
+DROP COLUMN activeNo;
 
 -- changeset lichen:2016121306
 UPDATE other_rate
@@ -90,7 +90,7 @@ WHERE rateKey = 'daily_input_limit';
 
 -- changeset lichen:2016121307
 ALTER TABLE user
-  ADD COLUMN activeRecommendCount INT DEFAULT 0
+ADD COLUMN activeRecommendCount INT DEFAULT 0
 COMMENT '推荐动态用户数量';
 
 UPDATE user uu, (SELECT
@@ -141,3 +141,7 @@ SET isFeed = '0', rePurchase = 0, todayRepurchase = 0;
 -- changeset lichen:2016121311
 UPDATE user
 SET todayIncome = '0.00';
+
+-- changeset lichen:2016121312
+ALTER TABLE user ADD COLUMN isTransfer CHAR(1) DEFAULT '0'
+COMMENT '今日是否转币,0:否，1：是';
