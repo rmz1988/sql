@@ -142,3 +142,5 @@ SET isFeed = '0', rePurchase = 0, todayRepurchase = 0;
 UPDATE user
 SET todayIncome = '0.00';
 
+-- changeset lichen:2016121313
+ALTER TABLE recharge DROP COLUMN activatedNo;
