@@ -142,6 +142,3 @@ SET isFeed = '0', rePurchase = 0, todayRepurchase = 0;
 UPDATE user
 SET todayIncome = '0.00';
 
--- changeset lichen:2016121312
-ALTER TABLE user ADD COLUMN isTransfer CHAR(1) DEFAULT '0'
-COMMENT '今日是否转币,0:否，1：是';
